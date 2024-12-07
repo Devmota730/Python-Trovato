@@ -1,0 +1,35 @@
+valorA = 76
+ValorB = 23
+
+print('Valor A', valorA, 'valor B', ValorB)
+print('soma', valorA + ValorB)
+print('Subtração', valorA - ValorB)
+print('multiplicação', valorA * ValorB)
+print('elevação a potencia', valorA ** ValorB)
+print('dividir', valorA / ValorB)
+print('dividir sem ser quebrado', valorA // ValorB)
+print('mode da operação', valorA % ValorB )
+
+# Propriedade das operações
+
+vl1 = 5
+vl2 = 3
+vl3 = 4
+vl4 = 1
+
+print('media', (vl1 + vl2 + vl3 + vl4)/4)
+
+print('propriedade:', vl1 + vl2 * vl3)
+print('Prioridade: ', vl1 * (vl2 +vl3))
+print('x' * 5) # fica xxxxx
+# operadores incrementais
+
+valor_A = 10 
+valor_A +=20 # += soma o valor de 10 ao valor de A
+valor_A *=2 # realiza a multiplicação
+valor_A -= 2 # realiza a subtração
+
+
+print('valor de A:', valor_A)
+
+
