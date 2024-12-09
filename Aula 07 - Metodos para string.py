@@ -34,7 +34,19 @@ print(len('leonardo amancio da mota'))
  
 # Extração de texto
 print(varTexto[0:5]) #extrai da posição 0 a posição 4
+print(varTexto[5]) # estra o 5 caracteres da palavra
+print(varTexto[6:]) #traz todos os caracteres da depois da 6 posição
 
+# Eliminar espaços indesejados
+Nome = 'leonardo amancio da mota'
+print(Nome.strip())
+print('tamanho A com strip: ',len(Nome.strip())) # o strip faz um copia das letras, o len conta o tamanho
+print(len(Nome.strip()))
+
+# concatenação com strings
+
+print('-'.join(Nome)) # adiciona o - em cada lestra da string
+print('.'.join(CPF))
 
 
 
