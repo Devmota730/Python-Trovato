@@ -23,6 +23,20 @@ print('x' * 15) # preenche 15x
 # alteração da caixa de palavras
 
 print('teste do title', varTexto.title()), # deixa em maisculo a iniciais
+print(varTexto.upper()) 
+print(varTexto.lower())
+
+print('LeOnardO'.swapcase()) # invert maisculos e minisculos
+
+# Len, verifica o tamanho de uma string
+print(len(varTexto))
+print(len('leonardo amancio da mota'))
+ 
+# Extração de texto
+print(varTexto[0:5]) #extrai da posição 0 a posição 4
+
+
+
 
 
 
