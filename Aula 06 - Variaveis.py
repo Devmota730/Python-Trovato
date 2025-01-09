@@ -15,6 +15,7 @@ var1 = 48.5999
 var2 = False
 var3 = 'pytohn'
 var4 = 88.4
+var5, var6 = 20, 'tarde'
 
 # conversão de variaveis
 

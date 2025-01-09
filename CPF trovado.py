@@ -28,8 +28,7 @@ for i in range(1,10):
 
 for i in range(2, 11):
     numDV2 = numDV2 + int(strCPF[i-1: i]) * (i -1)
-    print(numDV2)
-
+  
 # extrair o resto da divisao
 
 numDV1 = numDV1 % 11
