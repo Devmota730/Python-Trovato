@@ -6,6 +6,8 @@
 
 import math as m
 
+import numpy 
+
 
 print('Trunc', m.trunc(3.36352))
 print('Cei', m.ceil(2.52525)) # aredonda para cima
