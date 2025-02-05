@@ -38,7 +38,7 @@ pais = []
 funcao = []
 data_nascimento = []
 
-for i in range(100):
+for i in range(3):
     nome.append(fake.name())
     empresa.append(fake.company())
     pais.append(fake.country())
@@ -62,4 +62,22 @@ df = panda.DataFrame({
 print(df)
 
 df.to_csv('./dados_fake.csv', index=False)
+
+#Diversos 
+print('teste', fake.random_letter()) # uma letra
+print('teste random', fake.random_letters(8)) # 8 letras aleatorias
+print('Ano',fake.year())
+print('Data ',fake.date())
+print(fake.date_time()) # data com horas
+print(fake.time()) # hora qualquer
+print(fake.url())
+print(fake.cpf())
+
+
+
+
+print()
+
+
+
 

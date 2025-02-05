@@ -152,23 +152,22 @@ Anos = (f" {computer_age} anos")
 regional = "Nordeste"
 marca = "wyden"
 unidade = "UniFanor"
+Office = "Office 2019"
 def enviar_dados():        
-    setor = setor_var.get()
-    local = entry_local.get()
+    Setor = entry_local.get()
                   
     confirmation = messagebox.askyesno(
     "Confirmação",
     f"Você selecionou a regional: {regional}\n"
     f"Marca: {marca}\n"
-    f"Setor: {setor}\n"
-    f"Local: {local}\n"
+    f"Local: {Setor}\n"
     f"Unidade: {unidade}\n"
     f"Hostname: {hostname}\n"
     f"Username: {username}\n"
     f"Domain: {domain}\n"
     f"Versão: {versao}\n"
     f"Tipo de Computador: {computer_type}\n"
-    f"Pacote Office: {office_package}\n"
+    f"Pacote Office: {Office}\n"
     f"Fabricante: {manufacturer}\n"
     f"Modelo: {model}\n"
     f"RAM: {RAM}\n"
@@ -183,25 +182,21 @@ def enviar_dados():
         form_url = 'https://docs.google.com/forms/d/e/1FAIpQLSexKYmHwsLTfTGQjLu4c0eA_JZYdMPairLIr1tgzNVmCbaVVg/formResponse'
         form_data = {
             'entry.1962317397': regional,
-            'entry.0987654321': hostname,
             'entry.663803946': marca,
-            'entry.0987654321': setor,
-            'entry.663803946': local,
             'entry.586116077': unidade,
             'entry.2043695424': hostname,
             'entry.180468983': username,
+            'entry.250274945': Setor,
+            'entry.1689058791': computer_type,
             'entry.305050396': domain,
             'entry.1598784526': versao,
-            'entry.1689058791': computer_type,
-            'entry.1631495942': office_package,
+            'entry.1631495942': Office,
+            'entry.508585755': RAM,
             'entry.1995549497': manufacturer,
             'entry.809184448': model,
-            'entry.508585755': RAM,
             'entry.9233005': SSD,
             'entry.1650346718': CPUG,
-            'entry.250274945': descricao,
-            'entry.186411303': anos,
-            'entry.1234567890': foto  # Adicione o campo da foto aqui
+            'entry.186411303': Anos,
         }
         try:
             response = requests.post(form_url, data=form_data)
@@ -225,12 +220,6 @@ image = tk.PhotoImage(file="ydqus-estacio.png")  # Substitua "ydqus-estacio.png"
 image_label = tk.Label(root, image=image)
 image_label.grid(row=0, columnspan=3, pady=10)
 
-
-tk.Label(root, text="Setor:").grid(row=3, column=0)
-setor_var = tk.StringVar(root)
-setor_var.set("Laboratório-01")  # valor padrão
-setor_menu = tk.OptionMenu(root, setor_var, "Laboratório-01", "Laboratório-02", "Laboratório-03", "Laboratório-04", "Laboratório-05", "Laboratório-07")
-setor_menu.grid(row=3, column=1)
 
 tk.Label(root, text="Local:").grid(row=4, column=0)
 entry_local = tk.Entry(root)

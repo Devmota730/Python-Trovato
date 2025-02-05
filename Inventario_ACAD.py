@@ -56,7 +56,7 @@ def get_computer_type():
     return "Unknown"
 
 computer_type = get_computer_type()
-print(f"Computer Type: {computer_type}")
+#print(f"Computer Type: {computer_type}")
 
 
 
@@ -79,8 +79,8 @@ def get_office_package():
     except Exception as e:
         return f"Erro ao obter a versão do Office: {e}"
 
-office_package = get_office_package()
-print(office_package)
+#office_package = get_office_package()
+#print(office_package)
 
 # pega a informação do fabricante
 def get_computer_manufacturer():
@@ -89,7 +89,7 @@ def get_computer_manufacturer():
         return system.Manufacturer
 
 manufacturer = get_computer_manufacturer()
-print(f"Manufacturer: {manufacturer}")
+#print(f"Manufacturer: {manufacturer}")
 
 
 # pega informação do modelo 
@@ -99,7 +99,7 @@ def get_computer_model():
         return system.Model
 
 model = get_computer_model()
-print(f"Model: {model}")
+#print(f"Model: {model}")
 
 # Pepga informação da memoria
 def get_ram_size():
@@ -127,13 +127,13 @@ CPUG = (info['brand_raw'])
 
 
 # Coleta a Descrição do equipamento
-strComputer = "."
-objWMIService = win32com.client.Dispatch("WbemScripting.SWbemLocator")
-objSWbemServices = objWMIService.ConnectServer(strComputer, "root\\cimv2")
-colItems = objSWbemServices.ExecQuery("SELECT * FROM Win32_OperatingSystem")
+#strComputer = "."
+#objWMIService = win32com.client.Dispatch("WbemScripting.SWbemLocator")
+#objSWbemServices = objWMIService.ConnectServer(strComputer, "root\\cimv2")
+#colItems = objSWbemServices.ExecQuery("SELECT * FROM Win32_OperatingSystem")
 
-for objItem in colItems:
-    Descrição = {objItem.Description}
+#for objItem in colItems:
+#   Descrição = {objItem.Description}
 
 #Determina ano do equiapamento
 from datetime import datetime
@@ -152,29 +152,28 @@ Anos = (f" {computer_age} anos")
 regional = "Nordeste"
 marca = "wyden"
 unidade = "UniFanor"
+Office = "Office 2019"
+
 def enviar_dados():        
     setor = setor_var.get()
-    local = entry_local.get()
-                  
+             
     confirmation = messagebox.askyesno(
     "Confirmação",
     f"Você selecionou a regional: {regional}\n"
     f"Marca: {marca}\n"
-    f"Setor: {setor}\n"
-    f"Local: {local}\n"
     f"Unidade: {unidade}\n"
     f"Hostname: {hostname}\n"
     f"Username: {username}\n"
-    f"Domain: {domain}\n"
-    f"Versão: {versao}\n"
+    f"Setor: {setor}\n"
     f"Tipo de Computador: {computer_type}\n"
-    f"Pacote Office: {office_package}\n"
-    f"Fabricante: {manufacturer}\n"
+    f"Dominio: {domain}\n"
+    f"Versão do Windows: {versao}\n"
+    f"Pacote Office: {Office}\n"
+    f"Memória: {RAM}\n"
+    f"fabricante: {manufacturer}\n"
     f"Modelo: {model}\n"
-    f"RAM: {RAM}\n"
     f"SSD: {SSD}\n"
     f"CPU/GPU: {CPUG}\n"
-    f"Descrição: {Descrição}\n"
     f"Anos: {Anos}\n"
     "Deseja enviar?"
 )
@@ -183,25 +182,21 @@ def enviar_dados():
         form_url = 'https://docs.google.com/forms/d/e/1FAIpQLSexKYmHwsLTfTGQjLu4c0eA_JZYdMPairLIr1tgzNVmCbaVVg/formResponse'
         form_data = {
             'entry.1962317397': regional,
-            'entry.0987654321': hostname,
             'entry.663803946': marca,
-            'entry.0987654321': setor,
-            'entry.663803946': local,
             'entry.586116077': unidade,
             'entry.2043695424': hostname,
             'entry.180468983': username,
+            'entry.250274945': setor,
+            'entry.1689058791': computer_type,
             'entry.305050396': domain,
             'entry.1598784526': versao,
-            'entry.1689058791': computer_type,
-            'entry.1631495942': office_package,
+            'entry.1631495942': Office,
+            'entry.508585755': RAM,
             'entry.1995549497': manufacturer,
             'entry.809184448': model,
-            'entry.508585755': RAM,
             'entry.9233005': SSD,
             'entry.1650346718': CPUG,
-            'entry.250274945': descricao,
-            'entry.186411303': anos,
-            'entry.1234567890': foto  # Adicione o campo da foto aqui
+            'entry.186411303': Anos,
         }
         try:
             response = requests.post(form_url, data=form_data)
@@ -229,12 +224,8 @@ image_label.grid(row=0, columnspan=3, pady=10)
 tk.Label(root, text="Setor:").grid(row=3, column=0)
 setor_var = tk.StringVar(root)
 setor_var.set("Laboratório-01")  # valor padrão
-setor_menu = tk.OptionMenu(root, setor_var, "Laboratório-01", "Laboratório-02", "Laboratório-03", "Laboratório-04", "Laboratório-05", "Laboratório-07")
+setor_menu = tk.OptionMenu(root, setor_var, "Laboratório-Informática-01", "Laboratório-Informática-02", "Laboratório-Informática-03", "Laboratório-Informática-04", "Laboratório-Informática-05", "Laboratório-Informática-07")
 setor_menu.grid(row=3, column=1)
-
-tk.Label(root, text="Local:").grid(row=4, column=0)
-entry_local = tk.Entry(root)
-entry_local.grid(row=4, column=1)
 
 tk.Button(root, text="Enviar", command=enviar_dados).grid(row=20, columnspan=3)
 

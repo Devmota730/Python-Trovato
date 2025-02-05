@@ -129,7 +129,6 @@ colItems = objSWbemServices.ExecQuery("SELECT * FROM Win32_OperatingSystem")
 for objItem in colItems:
     Descrição = {objItem.Description}
 
-
 #Determina ano do equiapamento
 from datetime import datetime
 def get_computer_age():

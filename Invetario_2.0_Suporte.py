@@ -141,6 +141,12 @@ Marca = "Wydem"
 Unidade = "UniFanor"
 
 
+import subprocess
+import re
+from datetime import datetime
+import requests
+from tkinter import messagebox
+
 # URL do formulário e dados a serem enviados
 form_url = "https://docs.google.com/forms/d/e/1FAIpQLSexKYmHwsLTfTGQjLu4c0eA_JZYdMPairLIr1tgzNVmCbaVVg/formResponse"
 form_data = {
@@ -162,8 +168,7 @@ form_data = {
     "entry.186411303": Anos
 }
 
-#confirmation = messagebox.askyesno("Confirmação", f"Você selecionou a regional: {regional}\n\nMarca: {marca}\n\nUnidade: {unidade}\nHostname: {hostname}\nDeseja enviar?")
-
+# Caixa de confirmação
 confirmation = messagebox.askyesno(
     "Confirmação",
     f"Você selecionou a regional: {Regional}\n"
@@ -185,20 +190,19 @@ confirmation = messagebox.askyesno(
     "Deseja enviar?"
 )
 
+if confirmation:
+    try:
+        # Enviar os dados para o formulário
+        response = requests.post(form_url, data=form_data)
 
-try:
-    # Enviar os dados para o formulário
-    response = requests.post(form_url, data=form_data)
+        # Verificar se a submissão foi bem-sucedida
+        if response.status_code == 200 or response.status_code == 302:
+            print("Todas as informações foram enviadas ao Forms!")
+        else:
+            print(f"Falha ao enviar o hostname, username e domínio. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"Ocorreu um erro ao enviar os dados: {e}")
+else:
+    print("Envio do formulário cancelado.")
 
-    # Verificar se a submissão foi bem-sucedida
-    if response.status_code == 200 or response.status_code == 302:
-        print("Todas as informações enviado ao Forms!")
-    else:
-        print(f"Falha ao enviar o hostname, username e domínio. Status code: {response.status_code}")
-except Exception as e:
-    print(f"Ocorreu um erro ao enviar os dados: {e}")
-
-
-input('Inventario realizado, com sucesso!')
-
-
+input('Inventário realizado com sucesso!')
